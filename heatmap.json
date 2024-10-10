@@ -1,0 +1,35 @@
+{
+  "width": 600,
+  "height": 300,
+  "title": "Immigration Heatmap by Month and Year",
+  "data": {
+    "url": "https://raw.githubusercontent.com/Excel124/FIT3179/refs/heads/main/arrivals_soe%20(2).csv"
+  },
+  "transform": [
+    {
+      "calculate": "year(datum.date)",
+      "as": "year"
+    },
+    {
+      "calculate": "month(datum.date)",
+      "as": "month"
+    },
+    {
+      "aggregate": [
+        {"op": "sum", "field": "arrivals", "as": "total_arrivals"}
+      ],
+      "groupby": ["year", "month"]
+    }
+  ],
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "month", "type": "ordinal", "title": "Month"},
+    "y": {"field": "year", "type": "ordinal", "title": "Year"},
+    "color": {
+      "field": "total_arrivals",
+      "type": "quantitative",
+      "title": "Total Arrivals",
+      "scale": {"scheme": "reds"}
+    }
+  }
+}

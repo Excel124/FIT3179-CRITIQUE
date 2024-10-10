@@ -1,0 +1,78 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/Excel124/FIT3179-ASGN2/main/tourism%20consumption%20of%20visitors%20by%20products.csv"
+  },
+  "params": [
+    {
+      "name": "source_select",
+      "value": "transposed_cleaned_Internal tourism consumption of visitors by products.csv",
+      "bind": {
+        "input": "select",
+        "options": [
+          "transposed_cleaned_Internal tourism consumption of visitors by products.csv",
+          "transposed_cleaned_Domestic tourism expenditure of visitors by products.csv"
+          
+        
+        ],
+        "labels": ["Internal", "Domestic", "Inbound"],
+        "name": "Select Tourism Type: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.source_file == source_select"
+    },
+    {
+      "fold": [
+        "Accommodation services",
+        "Food and beverage serving services",
+        "Passenger transport services",
+        "Travel agencies and other reservation services",
+        "Cultural sports and recreational services",
+        "Retail sale of automotive fuel",
+        "Country-specific tourism characteristic goods",
+        "Country-specific tourism characteristic services"
+      ],
+      "as": ["Category", "Value"]
+    },
+    {
+      "calculate": "toNumber(datum.Value)",
+      "as": "NumericValue"
+    }
+  ],
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year",
+      "sort": "ascending"
+    },
+    "y": {
+      "field": "NumericValue",
+      "type": "quantitative",
+      "title": "Expenditure (Million MYR)",
+      "stack": "zero"
+    },
+    "color": {
+      "field": "Category",
+      "type": "nominal",
+      "scale": {"scheme": "category10"},
+      "title": "Expenditure Category"
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal", "title": "Year"},
+      {"field": "Category", "type": "nominal", "title": "Category"},
+      {"field": "NumericValue", "type": "quantitative", "title": "Value", "format": ",.0f"}
+    ]
+  },
+  "config": {
+    "axis": {"grid": false},
+    "view": {"stroke": null}
+  },
+  "title": "Tourism Consumption by Category and Year"
+}

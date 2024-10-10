@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Tourism's Contribution to Malaysian GDP (2015-2023)",
+  "width": 600,
+  "height": 400,
+  "data": {
+    "values": [
+      {"Year": 2015, "TDGDP": 74956.9, "GDP": 1176941.2},
+      {"Year": 2016, "TDGDP": 82093.4, "GDP": 1249697.7},
+      {"Year": 2017, "TDGDP": 87895.1, "GDP": 1372310.0},
+      {"Year": 2018, "TDGDP": 94575.4, "GDP": 1447759.6},
+      {"Year": 2019, "TDGDP": 102272.3, "GDP": 1512737.8},
+      {"Year": 2020, "TDGDP": 28350.8, "GDP": 1418490.9},
+      {"Year": 2021, "TDGDP": 11660.1, "GDP": 1548700.8},
+      {"Year": 2022, "TDGDP": 47982.5, "GDP": 1793903.1},
+      {"Year": 2023, "TDGDP": 81191.9, "GDP": 1822904.4}
+    ]
+  },
+  "transform": [
+    {"calculate": "datum.TDGDP / datum.GDP * 100", "as": "TourismPercentage"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "color": "#85C1E9"},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal", "axis": {"labelAngle": 0}},
+        "y": {"field": "GDP", "type": "quantitative", "title": "GDP (Million MYR)"}
+      }
+    },
+    {
+      "mark": {"type": "bar", "color": "#2E86C1"},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "TDGDP", "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "text", "dy": -10},
+      "encoding": {
+        "x": {"field": "Year", "type": "ordinal"},
+        "y": {"field": "GDP", "type": "quantitative"},
+        "text": {"field": "TourismPercentage", "type": "quantitative", "format": ".1f"},
+        "color": {"value": "black"}
+      }
+    }
+  ],
+  "encoding": {
+    "tooltip": [
+      {"field": "Year", "type": "ordinal"},
+      {"field": "GDP", "type": "quantitative", "title": "Total GDP (Million MYR)", "format": ",.0f"},
+      {"field": "TDGDP", "type": "quantitative", "title": "Tourism Direct GDP (Million MYR)", "format": ",.0f"},
+      {"field": "TourismPercentage", "type": "quantitative", "title": "Tourism Contribution (%)", "format": ".1f"}
+    ]
+  }
+}
