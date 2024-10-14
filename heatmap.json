@@ -30,6 +30,11 @@
       "type": "quantitative",
       "title": "Total Arrivals",
       "scale": {"scheme": "reds"}
-    }
+    },
+    "tooltip": [
+      {"field": "year", "type": "ordinal", "title": "Year"},
+      {"field": "month", "type": "ordinal", "title": "Month"},
+      {"field": "total_arrivals", "type": "quantitative", "title": "Total Arrivals"}
+    ]
   }
 }
