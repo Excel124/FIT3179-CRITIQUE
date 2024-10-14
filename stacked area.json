@@ -8,7 +8,7 @@
   "params": [
     {
       "name": "source_select",
-      "value": "transposed_cleaned_Internal tourism consumption of visitors by products.csv",
+      "value": "transposed_cleaned_Domestic tourism expenditure of visitors by products.csv",
       "bind": {
         "input": "select",
         "options": [
@@ -73,5 +73,5 @@
     "axis": {"grid": false},
     "view": {"stroke": null}
   },
-  "title": "Tourism Consumption by Category and Year"
+  "title": "Tourism Expenditure by Category and Year"
 }
