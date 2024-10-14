@@ -93,6 +93,19 @@
             }
           ]
         },
+           {
+      "data": {
+        "url": "https://raw.githubusercontent.com/martynafford/natural-earth-geojson/refs/heads/master/10m/physical/ne_10m_ocean.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_10m_ocean"
+        }
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#cce5ff"
+      }
+    },
         {
           "data": {
             "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/refs/heads/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
