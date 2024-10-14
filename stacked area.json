@@ -12,12 +12,10 @@
       "bind": {
         "input": "select",
         "options": [
-          "transposed_cleaned_Internal tourism consumption of visitors by products.csv",
+          "transposed_cleaned_Inbound tourism expenditure of visitors by products.csv",
           "transposed_cleaned_Domestic tourism expenditure of visitors by products.csv"
-          
-        
         ],
-        "labels": ["Internal", "Domestic", "Inbound"],
+        "labels": [ "Domestic","Inbound"],
         "name": "Select Tourism Type: "
       }
     }
@@ -56,7 +54,8 @@
       "field": "NumericValue",
       "type": "quantitative",
       "title": "Expenditure (Million MYR)",
-      "stack": "zero"
+      "stack": "zero",
+      "scale": {"domain": [0, 100000]}
     },
     "color": {
       "field": "Category",
